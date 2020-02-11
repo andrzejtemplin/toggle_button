@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <script src="toggleButton.js"></script>
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <!-- It won't work because of shadow DOM -->
+  <!-- <style>
+    .slider.round {
+      background-color: "#a83268";
+    }
+  </style> -->
+  <toggle-button> </toggle-button>
+</body>
+<script>
+  const toggleButton = document.querySelector("toggle-button");
+  toggleButton.addEventListener("toggleButtonChanged", event => {
+    console.log("Toggle button is checked: ", event.target.value);
+  });
+
+   //  Styling shadowed DOM
+  //  toggleButton.shadowRoot.querySelector('.slider.round').style.background = "#a83268";
+
+</script>
+
+</html>

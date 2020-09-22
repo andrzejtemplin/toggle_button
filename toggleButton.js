@@ -62,7 +62,6 @@ class ToggleButton extends HTMLElement {
   
   constructor() {
     super();
-    this.value = false;
 
     const shadowRoot = this.attachShadow({ mode: 'open' });
     shadowRoot.appendChild(tmpl.content.cloneNode(true));
@@ -75,6 +74,10 @@ class ToggleButton extends HTMLElement {
       bubbles: true,
       composed: true
     })
+  }
+  
+  connectedCallback() {
+    console.log('Connected callback')
   }
 
   static get observedAttributes() {
@@ -92,7 +95,7 @@ class ToggleButton extends HTMLElement {
   }
 
   disconnectedCallback() {
-    this.removeEventListener('click', this.changeToggleButtonState());
+    console.log('Disconnected callback')
   }
 }
 

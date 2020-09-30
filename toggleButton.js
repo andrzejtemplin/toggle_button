@@ -75,7 +75,6 @@ class ToggleButton extends HTMLElement {
       composed: true
     })
   }
-  
   connectedCallback() {
     console.log('Connected callback')
   }
@@ -87,7 +86,6 @@ class ToggleButton extends HTMLElement {
   attributeChangedCallback() {
     this.changeToggleButtonState();
   }
-
   changeToggleButtonState() {
     this.value = !this.value;
     this.value ? this.setAttribute('class','toggle-on') : this.removeAttribute('class');

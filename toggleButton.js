@@ -57,3 +57,30 @@ tmpl.innerHTML = `
 <div class='slider round'></div>
 </div>
 `
+
+class ToggleButton extends HTMLElement {
+
+  constructor() {
+    super();
+    const shadowRoot = this.attachShadow({ mode: 'closed' });
+    shadowRoot.appendChild(tmpl.content.cloneNode(true));
+    this.addEventListener('click', this.changeToggleButtonChange);
+    this.onToggleButtonChange = new Event('toggleButtonChange', { bubbles: true, composed: true });
+  }
+
+  changeToggleButtonChange() {
+    this.value = !this.value;
+    this.value ? this.setAttribute('class', 'toggle-on') : this.removeAttribute('class');
+  }
+
+  static get observedAttributes() {
+    return ['checked']
+  }
+
+  attributeChangedCallback() {
+    this.changeToggleButtonChange();
+  }
+
+}
+
+customElements.define('toggle-button', ToggleButton);
